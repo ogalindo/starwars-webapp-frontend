@@ -1,0 +1,12 @@
+@use '../../../styles/variables' as *;
+.title {
+    color: $color-dark;
+}
+
+.subtitle {
+    color: $color-gray;
+}
+
+.text {
+    color: $color-accent;
+}

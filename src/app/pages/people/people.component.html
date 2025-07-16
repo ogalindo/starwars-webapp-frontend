@@ -1,0 +1,45 @@
+<div class="container">
+    <h1>Star Wars people</h1>
+
+    <input
+  type="text"
+  placeholder="Search by name"
+  (input)="onSearch($event)"
+/>
+
+<div class="card-grid">
+  <app-card
+    *ngFor="let item of filteredResources"
+    [name]="item.name"
+    [uid]="item.uid"
+    [url]="item.url"
+    (open)="viewPersonDetails($event)">
+  </app-card>
+</div>
+
+<div class="pagination">
+  <button
+    [disabled]="currentPage === 1"
+    (click)="changePage(currentPage - 1)">
+    Prev
+  </button>
+  <span>Page {{ currentPage }} / {{ totalPages }}</span>
+  <button
+    [disabled]="currentPage === totalPages"
+    (click)="changePage(currentPage + 1)">
+    Next
+  </button>
+</div>
+
+<app-modal [visible]="modalVisible" (close)="closeModal()">
+  <ng-container *ngIf="selectedPerson">
+    <h2>{{ selectedPerson.properties.name }}</h2>
+    <p><strong>Gender:</strong> {{ selectedPerson.properties.gender }}</p>
+    <p><strong>Birth year:</strong> {{ selectedPerson.properties.birth_year }}</p>
+    <p><strong>Height:</strong> {{ selectedPerson.properties.height }} cm</p>
+  </ng-container>
+</app-modal>
+</div>
+
+
+

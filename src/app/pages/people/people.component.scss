@@ -1,0 +1,6 @@
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // 2 tarjetas por fila
+  gap: 1rem;
+  padding: 1rem;
+}
