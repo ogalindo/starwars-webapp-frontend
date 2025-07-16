@@ -5,6 +5,7 @@ import { CardComponent } from '../../shared/components/card/card.component';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { PeopleResponse } from '../../shared/models/people.interface';
 import { PersonDetail, PersonProperties } from '../../shared/models/person-detail.interface';
+import { LoaderService } from '../../core/services/loader.service';
 
 @Component({
   selector: 'app-people',
@@ -21,18 +22,24 @@ export class PeopleComponent {
   modalVisible = false;
   selectedPerson: PersonDetail | null = null;
 
-  constructor(private swService: StarWarsService) { }
+  constructor(private swService: StarWarsService,
+    private loaderService: LoaderService
+  ) { }
 
   ngOnInit(): void {
     this.loadResources();
   }
 
   loadResources(): void {
-    console.log('load resources');
-    this.swService.getPeople(this.currentPage).subscribe((res: PeopleResponse) => {
-      this.resources = res.results;
-      this.filteredResources = [...this.resources];
-      this.totalPages = res.total_pages;
+    this.loaderService.show();
+    this.swService.getPeople(this.currentPage).subscribe({
+      next: (res: PeopleResponse) => {
+        this.resources = res.results;
+        this.filteredResources = [...this.resources];
+        this.totalPages = res.total_pages;
+      },
+      error: (err) => console.error(err),
+      complete: () => this.loaderService.hide()
     });
   }
 
@@ -53,10 +60,17 @@ export class PeopleComponent {
   }
 
   viewPersonDetails(uid: string) {
-    this.swService.getPersonById(uid).subscribe((res) => {
-      this.selectedPerson = res.result;
-      this.modalVisible = true;
-    });
+    this.loaderService.show();
+    this.swService.getPersonById(uid).subscribe({
+      next: (res) => {
+        this.selectedPerson = res.result;
+        this.modalVisible = true;
+      },
+      error: (err) => console.error(err),
+      complete: () => this.loaderService.hide()
+    }
+
+    );
   }
 
   closeModal() {

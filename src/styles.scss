@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'styles/variables' as *;
+
+body {
+    height: 100vh;
+    background-color: $color-light;
+    color: $color-dark;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.container {
+    text-align: center;
+}
