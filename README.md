@@ -2,6 +2,40 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
 
+This is an Angular-based web application that displays data from the [SWAPI](https://www.swapi.tech/) (Star Wars API).  
+Users can explore characters and (soon) other resources from the Star Wars universe.
+
+---
+
+## 🚀 Features
+
+- ✅ Home page with welcome message and navigation menu
+- ✅ "People" page to browse characters with:
+  - Pagination
+  - Filtering by name
+  - Reusable cards
+  - Detail modal with character info
+- 🌀 Global loading spinner
+- ⚙️ Modular architecture with reusable shared components
+- 🎨 Custom Star Wars color palette (SCSS variables)
+
+---
+
+## 📦 Tech Stack
+
+- **Angular 17+** with Standalone Components
+- **TypeScript**
+- **SCSS** with global variables
+- **RxJS** for reactive programming
+- **SWAPI.tech** for data
+
+---
+
+
+## 🔨 Future Improvements
+- Add support for "Films", "Planets", and more SWAPI endpoints
+
+
 ## Development server
 
 To start a local development server, run:
