@@ -1,0 +1,80 @@
+@use '../../../../styles/variables' as *;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $color-hero-bg;
+  color: $color-white;
+  padding: 1rem 2rem;
+  position: relative;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-left img {
+  height: 80px;
+  width: 80px;
+}
+
+.navbar-left a {
+  text-decoration: none;
+}
+
+.navbar-left a .brand {
+  color: $color-primary;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.navbar-menu li a {
+  color: $color-white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.navbar-menu li a.active,
+.navbar-menu li a:hover {
+  color: $color-link-active;
+}
+
+/* Responsive */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: $color-white;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar-menu {
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: $color-head-bg;
+    display: none;
+    padding: 1rem;
+  }
+
+  .navbar-menu.open {
+    display: flex;
+  }
+}

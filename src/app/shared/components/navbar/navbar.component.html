@@ -1,0 +1,14 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <img src="/assets/star-wars-4.svg" alt="Logo Star Wars" />
+    <a routerLink="/dashboard/home" routerLinkActive="active"><span class="brand">Star Wars App</span></a>
+  </div>
+
+  <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+
+  <ul class="navbar-menu" [ngClass]="{ 'open': menuOpen }">
+    <li><a routerLink="/ruta1" routerLinkActive="active">Ruta 1</a></li>
+    <li><a routerLink="/dashboard/people" routerLinkActive="active">People</a></li>
+    <li><a routerLink="/ruta3" routerLinkActive="active">Ruta 3</a></li>
+  </ul>
+</nav>
